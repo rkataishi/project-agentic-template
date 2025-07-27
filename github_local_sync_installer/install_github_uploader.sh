@@ -1,17 +1,17 @@
 #!/bin/bash
-
-sudo tee /usr/local/bin/upload_to_github > /dev/null << 'EOF'
+#v2
+sudo tee /usr/local/bin/upload_to_github > /dev/null <<EOF
 #!/bin/bash
 
-if [ $# -lt 2 ]; then
+if [ \$# -lt 2 ]; then
   echo "Uso: upload_to_github <URL del repositorio> \"Mensaje de commit\""
   exit 1
 fi
 
-REPO_BASE_URL="$1"
-COMMIT_MSG="$2"
-REPO_URL="${REPO_BASE_URL}.git"
-REPO_NAME=$(basename "$REPO_BASE_URL")
+REPO_BASE_URL="\$1"
+COMMIT_MSG="\$2"
+REPO_URL="\${REPO_BASE_URL}.git"
+REPO_NAME=\$(basename "\$REPO_BASE_URL")
 
 echo "Repositorio: \$REPO_NAME"
 echo "Commit: \$COMMIT_MSG"
