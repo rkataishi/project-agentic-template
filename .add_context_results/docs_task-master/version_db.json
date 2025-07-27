@@ -1,0 +1,66 @@
+{
+  "https://docs.task-master.dev/docs/introduction": {
+    "hash": "7c15fe8a72a03e0b5eb5af1c5a157ab1fb807b2b4746ddc40d27b85e4ed0bd59",
+    "last_modified": null
+  },
+  "https://docs.task-master.dev/docs/getting-started/quick-start/tasks-quick": {
+    "hash": "3cae9c86c9ec848e31d3b345c9fbd6b8dbf6fd3ddff6d5dcb03301948074ccdb",
+    "last_modified": null
+  },
+  "https://docs.task-master.dev/docs/capabilities/mcp": {
+    "hash": "9466ee4f3e0454e3a6ae9651d318c0c4a58639fe951d6d23b6d29df03ac88d82",
+    "last_modified": null
+  },
+  "https://docs.task-master.dev/docs/best-practices/advanced-tasks": {
+    "hash": "ecf6d0c18304fbca0e3369562fc42610b56368f9980ca99a952d098b4bc17ce5",
+    "last_modified": null
+  },
+  "https://docs.task-master.dev/docs/getting-started/quick-start/quick-start": {
+    "hash": "cb261e64306501369ecd693893b6da48d6672775e5ae11213acab88cb2b44fa9",
+    "last_modified": null
+  },
+  "https://docs.task-master.dev/docs/getting-started/quick-start/requirements": {
+    "hash": "799fe7bb8c2a42c0c28a35cc820ca5ecff525d25e73a8aff3c1c1988aaa38d5f",
+    "last_modified": null
+  },
+  "https://docs.task-master.dev/docs/getting-started/quick-start/configuration-quick": {
+    "hash": "0090035bea5ed93e17ece4c6885f5dbeaf98c6f7c9029754b1aeaab3485d888c",
+    "last_modified": null
+  },
+  "https://docs.task-master.dev/docs/getting-started/faq": {
+    "hash": "8462ea7165a4c3f220b0efd691e20f23c75cbf958971eb6cd68dd0aa038330a9",
+    "last_modified": null
+  },
+  "https://docs.task-master.dev/docs/getting-started/quick-start/prd-quick": {
+    "hash": "3a2d888c42da481a4d2edcb266e9513eb4d2eb4d87e9c45d3e023f407ddadbcc",
+    "last_modified": null
+  },
+  "https://docs.task-master.dev/docs/capabilities/task-structure": {
+    "hash": "4f94f7363a294065d10cfee6a0d0327c87bce75479eb11c30a1d03b381859d03",
+    "last_modified": null
+  },
+  "https://docs.task-master.dev/docs/best-practices/configuration-advanced": {
+    "hash": "4475d719a9a0731acd96dccfbc9f87c39612c7acc128fdc76b30b7e146bb0de4",
+    "last_modified": null
+  },
+  "https://docs.task-master.dev/docs/capabilities/cli-root-commands": {
+    "hash": "1c169e866ce30951bd789967153547819be10a6e094c4b023c4dc4778950aabe",
+    "last_modified": null
+  },
+  "https://docs.task-master.dev/docs/getting-started/quick-start/installation": {
+    "hash": "cc51ea8e5c40c11d740d53a6dc46e1b6913d95aa4f207af93f66d2c61ffd03fe",
+    "last_modified": null
+  },
+  "https://docs.task-master.dev/docs/getting-started/quick-start/execute-quick": {
+    "hash": "87c9b073e88c27ab19f1922d9097fd124907be1d989c8ab612b91440b38e3eaa",
+    "last_modified": null
+  },
+  "https://docs.task-master.dev/docs/getting-started/contribute": {
+    "hash": "bbd3f41693158067cc4356ed8b7f8cd2cef0ec67445af7f57097530c3038f331",
+    "last_modified": null
+  },
+  "https://docs.task-master.dev/docs/best-practices/index": {
+    "hash": "d6bc83a305bf748e16a0af9a351b8a362904dddcc57e871d3609f60d3f35b3f2",
+    "last_modified": null
+  }
+}
