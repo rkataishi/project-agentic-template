@@ -1,0 +1,82 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+    
+  <url>
+    <loc>https://docs.task-master.dev/docs/best-practices/advanced-tasks</loc>
+    
+  </url>
+
+  <url>
+    <loc>https://docs.task-master.dev/docs/best-practices/configuration-advanced</loc>
+    
+  </url>
+
+  <url>
+    <loc>https://docs.task-master.dev/docs/best-practices/index</loc>
+    
+  </url>
+
+  <url>
+    <loc>https://docs.task-master.dev/docs/capabilities/cli-root-commands</loc>
+    
+  </url>
+
+  <url>
+    <loc>https://docs.task-master.dev/docs/capabilities/mcp</loc>
+    
+  </url>
+
+  <url>
+    <loc>https://docs.task-master.dev/docs/capabilities/task-structure</loc>
+    
+  </url>
+
+  <url>
+    <loc>https://docs.task-master.dev/docs/getting-started/contribute</loc>
+    
+  </url>
+
+  <url>
+    <loc>https://docs.task-master.dev/docs/getting-started/faq</loc>
+    
+  </url>
+
+  <url>
+    <loc>https://docs.task-master.dev/docs/getting-started/quick-start/configuration-quick</loc>
+    
+  </url>
+
+  <url>
+    <loc>https://docs.task-master.dev/docs/getting-started/quick-start/execute-quick</loc>
+    
+  </url>
+
+  <url>
+    <loc>https://docs.task-master.dev/docs/getting-started/quick-start/installation</loc>
+    
+  </url>
+
+  <url>
+    <loc>https://docs.task-master.dev/docs/getting-started/quick-start/prd-quick</loc>
+    
+  </url>
+
+  <url>
+    <loc>https://docs.task-master.dev/docs/getting-started/quick-start/quick-start</loc>
+    
+  </url>
+
+  <url>
+    <loc>https://docs.task-master.dev/docs/getting-started/quick-start/requirements</loc>
+    
+  </url>
+
+  <url>
+    <loc>https://docs.task-master.dev/docs/getting-started/quick-start/tasks-quick</loc>
+    
+  </url>
+
+  <url>
+    <loc>https://docs.task-master.dev/docs/introduction</loc>
+    
+  </url>
+</urlset>
