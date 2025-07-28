@@ -1,5 +1,6 @@
 #!/bin/bash
-#v2
+# v3 - Manejo robusto de conflictos y sincronización remota
+
 sudo tee /usr/local/bin/upload_to_github > /dev/null <<EOF
 #!/bin/bash
 
@@ -20,19 +21,26 @@ if [ ! -d .git ]; then
   git init -b main
 fi
 
-git add .
+git add --all
 git commit -m "\$COMMIT_MSG"
 
 if ! git remote | grep -q origin; then
   git remote add origin "\$REPO_URL"
-  git fetch origin
-  git merge origin/main --allow-unrelated-histories -m "Merge remoto y local"
-  git push -u origin main
-else
-  git push origin main
 fi
 
-echo "Actualización completada."
+echo "Sincronizando con el remoto..."
+git fetch origin
+git pull origin main --allow-unrelated-histories --no-rebase
+
+echo "Empujando los cambios..."
+git push origin main
+
+if [ \$? -ne 0 ]; then
+  echo "❌ Falló el push. Requiere resolución manual."
+  exit 1
+fi
+
+echo "Actualización completada correctamente."
 EOF
 
 sudo chmod +x /usr/local/bin/upload_to_github
