@@ -1,5 +1,5 @@
 #!/bin/bash
-# v3 - Manejo robusto de conflictos y sincronización remota
+# v3.1 - Soporte de merge automático y editor cambiado a nano
 
 sudo tee /usr/local/bin/upload_to_github > /dev/null <<EOF
 #!/bin/bash
@@ -21,6 +21,8 @@ if [ ! -d .git ]; then
   git init -b main
 fi
 
+git config core.editor "nano"
+
 git add --all
 git commit -m "\$COMMIT_MSG"
 
@@ -30,7 +32,7 @@ fi
 
 echo "Sincronizando con el remoto..."
 git fetch origin
-git pull origin main --allow-unrelated-histories --no-rebase
+git pull origin main --allow-unrelated-histories --no-rebase --strategy=ours
 
 echo "Empujando los cambios..."
 git push origin main
@@ -44,4 +46,4 @@ echo "Actualización completada correctamente."
 EOF
 
 sudo chmod +x /usr/local/bin/upload_to_github
-echo "Comando 'upload_to_github' instalado en /usr/local/bin"
+echo "Comando 'upload_to_github' v3.1 instalado en /usr/local/bin"
