@@ -6,17 +6,16 @@ This guide explains how the **Task Master CLI** is integrated into the TOFA-WDF 
 
 ## 1. Installation
 
-Inside your working environment:
+Install the CLI globally (recommended):
 
 ```bash
-pip install task-master
+npm install -g task-master-ai
 ```
 
-If using conda:
+Verify installation:
 
 ```bash
-conda activate <env_name>
-pip install task-master
+task-master --version
 ```
 
 ---
@@ -26,7 +25,7 @@ pip install task-master
 Run once from the root of the project:
 
 ```bash
-task init
+task-master init -y
 ```
 
 This creates `.taskmaster/` and sets up basic project config.
@@ -35,13 +34,15 @@ This creates `.taskmaster/` and sets up basic project config.
 
 ## 3. CLI Commands and TOFA Interactions
 
+The canonical CLI is `task-master`. Command names, flags, and usage align with the authoritative help reference in [docs/docs/external_knowledge/know_task_master_help.md](docs/docs/external_knowledge/know_task_master_help.md).
+
 | Task Master Command | Affected TOFA File(s) | Purpose |
-|-------------------|----------------------|---------|
-| `task prd "Task name"` | `pipeline/prd.md` + scaffold | Creates initial Product Requirement Document |
-| `task parse_prd` | `pipeline/microtasks.md` (structure only) | Scaffolds sections for active microtask record |
-| `task add_task "new subtask"` | none (CLI state only) | Adds a node to the task tree, not tracked in TOFA yet |
-| `task set_task_status --task X --status Y` | `pipeline/microtasks_log.md` | Updates state reflected in logs and MCP-compatible tools |
-| `task list` | CLI/interactive only | Lists task tree states and open/closed subtasks |
+|---------------------|-----------------------|---------|
+| `task-master parse-prd docs/pipeline/active/prd.md` | Generates `.taskmaster/tasks/tasks.json` | Parse PRD to generate initial tasks |
+| `task-master add-task -p "New task"` | Tasks JSON only | Adds a new task via AI |
+| `task-master set-status --id=5 --status=done` | Tasks JSON only | Update task status |
+| `task-master list` | CLI output | Lists task tree states and open/closed subtasks |
+| `task-master next` | CLI output | Suggests the next task to work on |
 
 ---
 
@@ -49,10 +50,10 @@ This creates `.taskmaster/` and sets up basic project config.
 
 | Source | Responsible For |
 |--------|------------------|
-| `task prd` | Scaffolds project with TOFA structure |
-| `pipeline/prd.md` | Defines the plan, objectives, and motivations |
-| `pipeline/microtasks.md` | Describes the active microtask: includes current objective, its constraints, reasoning path, and expected result |
-| `task parse_prd` | Can fill preliminary structure in microtasks.md, but does not define the plan |
+| `task-master init` | Initialize Task Master project structure |
+| `docs/pipeline/active/prd.md` | Defines the plan, objectives, and motivations |
+| `docs/pipeline/active/microtasks.md` | Describes the active microtask: includes current objective, constraints, reasoning, expected result |
+| `task-master parse-prd` | Generates tasks from the PRD (does not define the plan) |
 | Developer | Manually writes the plan in prd.md and the current objective in microtasks.md |
 
 ---
@@ -61,11 +62,11 @@ This creates `.taskmaster/` and sets up basic project config.
 
 1. **Define PRD**
    ↓
-   `task prd "Extract firm innovation patterns"`
+   Edit: `docs/pipeline/active/prd.md`
 
-2. **(Optional) Parse it**
+2. **Parse PRD**
    ↓
-   `task parse_prd`
+   `task-master parse-prd docs/pipeline/active/prd.md`
 
 3. **Write implementation plan manually in:**
    - `pipeline/prd.md` (goals, constraints, rationale)
@@ -76,10 +77,10 @@ This creates `.taskmaster/` and sets up basic project config.
    - `modules/` → `orchestrators/` → `flows/` → `scripts/`
 
 5. **Use status commands as needed:**
-   - `task set_task_status --task "X" --status in-progress`
+   - `task-master set-status --id=<id> --status=in-progress`
 
 6. **Finalize, close task:**
-   - `task set_task_status --task "X" --status done`
+   - `task-master set-status --id=<id> --status=done`
 
 7. **Archive:**
    - Move to `microtasks_done/`
@@ -95,9 +96,9 @@ You can integrate Task Master into LLM pipelines, IDE agents, or model coordinat
 ```json
 {
   "mcpServers": {
-    "task": {
-      "command": "task",
-      "args": ["status"],
+    "task-master": {
+      "command": "task-master",
+      "args": ["list"],
       "disabled": false,
       "autoApprove": [],
       "timeout": 60
@@ -115,9 +116,9 @@ This allows other tools to interact with your current task state.
 Task Master is not a replacement for TOFA. It is a coordination assistant.
 
 All plans, reasoning, and documentation must be written directly in:
-- `pipeline/prd.md`
-- `pipeline/microtasks.md`
-- `pipeline/memories.md`
-- `pipeline/learning_by_doing.md`
+- `docs/pipeline/active/prd.md`
+- `docs/pipeline/active/microtasks.md`
+- `docs/pipeline/memories.md`
+- `docs/pipeline/learning_by_doing.md`
 
-The task CLI helps track status, list subtasks, assign tags, and initiate PRDs—but never generates logic or strategies.
+The `task-master` CLI helps track status, list subtasks, manage tags, and parse PRDs—but never generates logic or strategies.

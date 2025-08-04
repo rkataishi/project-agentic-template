@@ -8,9 +8,9 @@ Its purpose is to be your onboarding lead, your initial set of instructions, and
 
 ---
 
-## Step 1: Initial Environment Setup
+## Step 1: Initial Setup and Task Master Configuration
 
-These commands will prepare your local environment.
+These steps will prepare your local environment and configure Task Master.
 
 1.  **Clone the Repository:**
     ```bash
@@ -19,29 +19,58 @@ These commands will prepare your local environment.
     ```
 
 2.  **Create the Project Structure (if not already present):**
-    ```bash
-    # This script creates all the necessary directories and template files.
-    chmod +x setup_pipeline.sh
-    ./setup_pipeline.sh
-    ```
+*This script creates all the necessary directories and template files.*
+```bash
+chmod +x setup_pipeline.sh
+./setup_pipeline.sh
+```
 
 3.  **Set up the Python Environment (using Poetry):**
-    *Our project uses [Poetry](https://python-poetry.org/) for dependency management. See `docs/rules/rule_dependency_management.md` for details.*
-    ```bash
-    # This command reads pyproject.toml, creates a virtual environment, and installs all dependencies.
-    poetry install
-    ```
+*Our project uses [Poetry](https://python-poetry.org/) for dependency management. See `docs/rules/rule_dependency_management.md` for details.*
+*Ensure `pyproject.toml` is present in the project root. If missing, refer to project documentation or use a template.*
+```bash
+# This command reads pyproject.toml, creates a virtual environment, and installs all dependencies.
+poetry install
+```
 
-4.  **Configure Local Secrets:**
-    *This is a critical security step. We never commit secrets to the repository.*
-    ```bash
-    # 1. Copy the template to create your local, untracked config file.
-    cp docs/templates/config/template_config.py config/config.py
+4.  **Task Master Setup:**
+*Install Task Master CLI, initialize the project, and configure models and API keys.*
+```bash
+# Install Task Master CLI
+npm install -g task-master-ai
 
-    # 2. Create a .env file for your secrets. This file is in .gitignore.
-    touch .env
-    ```
-    **Action:** Open the `.env` file and add your secret keys (e.g., `OPENAI_API_KEY="sk-..."`). The `config/config.py` file will load these automatically.
+# Verify installation
+task-master --version
+
+# Initialize Task Master
+task-master init -y
+
+# Ensure PRD exists (or create it using the template)
+# If you already have a PRD at docs/pipeline/active/prd.md, skip this copy.
+cp docs/templates/template_task_contract.md docs/pipeline/active/prd.md
+
+# Parse the PRD to generate initial tasks
+task-master parse-prd docs/pipeline/active/prd.md
+
+# Optional: Configure AI models (guided)
+task-master models --setup
+
+# Configure API keys:
+# - CLI: place provider keys in .env (e.g., OPENROUTER_API_KEY=..., ANTHROPIC_API_KEY=..., OPENAI_API_KEY=...)
+# - MCP/IDE: configure keys in .vscode/mcp.json (or your IDE's MCP config)
+```
+*Only add keys required by your chosen provider. Use one provider to start (e.g., OpenRouter) to simplify setup.*
+ 
+5.  **Configure Local Secrets:**
+*This is a critical security step. We never commit secrets to the repository.*
+```bash
+# 1. Copy the template to create your local, untracked config file.
+cp docs/templates/config/template_config.py config/config.py
+
+# 2. Create a .env file for your secrets. This file is in .gitignore.
+touch .env
+```
+**Action:** Open the `.env` file and add your secret keys (e.g., `OPENROUTER_API_KEY="..."`). The `config/config.py` file will load these automatically.
 
 5.  **Verify Your Setup:**
     *Run the project's test suite to ensure everything is installed and configured correctly.*
@@ -91,7 +120,13 @@ This project is governed by a set of rules to ensure quality, consistency, and s
 
 ---
 
-## Step 4: Your First Task
+## Step 4: Context Management with Tags
+
+For advanced workflows, this project uses tags to manage different task contexts (features, experiments, etc.). See `docs/pipeline/pipeline_development.md` for details on creating and switching between tags and how tags interplay with Task Master tasks.json.
+
+---
+
+## Step 5: Your First Task
 
 You are now ready to begin.
 
