@@ -1,4 +1,4 @@
-# Helper Scripts
+# Helper Scripts (docs_scripts_readme)
 
 This project ships a small set of helper scripts for documentation consolidation and GitHub workflow automation.
 
@@ -29,3 +29,8 @@ Location: scripts/
 Policy:
 - Do not duplicate these scripts under docs/.
 - The consolidated .all_tofa.md is non-canonical; canonical docs live in docs/.
+
+Naming convention note:
+- Only the repository root uses README.md.
+- All other readme-like docs must include a context-specific suffix in the filename.
+- This document title reflects its intended filename pattern: docs_scripts_readme.md.

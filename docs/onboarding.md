@@ -4,7 +4,12 @@ Welcome to the project. This document is your guide to getting set up, understan
 
 Its purpose is to be your onboarding lead, your initial set of instructions, and a central hub that links to all other critical documentation. Following these steps will allow you to start working autonomously and correctly.
 
-**Assumption:** The initial Product Requirements Document (`prd.md`) has been created and is located at `docs/pipeline/active/prd.md`.
+**PRD Source of Truth:** We maintain PRDs under `docs/prd/`. Create or update your working PRD at:
+- `docs/prd/current_prd.md` (recommended)
+
+Use the template and example provided:
+- Template: [`docs/templates/template_prd.md`](docs/templates/template_prd.md)
+- Example: [`docs/templates/example_prd.md`](docs/templates/example_prd.md)
 
 ---
 
@@ -46,11 +51,12 @@ task-master --version
 task-master init -y
 
 # Ensure PRD exists (or create it using the template)
-# If you already have a PRD at docs/pipeline/active/prd.md, skip this copy.
-cp docs/templates/template_task_contract.md docs/pipeline/active/prd.md
+# Save your PRD as docs/prd/current_prd.md
+mkdir -p docs/prd
+cp docs/templates/template_prd.md docs/prd/current_prd.md
 
 # Parse the PRD to generate initial tasks
-task-master parse-prd docs/pipeline/active/prd.md
+task-master parse-prd docs/prd/current_prd.md -o .taskmaster/tasks/tasks.json -n 8 -f
 
 # Optional: Configure AI models (guided)
 task-master models --setup
@@ -87,7 +93,7 @@ Your next step is to absorb the project's context.
 
 -   **The "Why" (The Mission):**
     -   **Action:** Read the Product Requirements Document (PRD).
-    -   **Location:** `docs/pipeline/active/prd.md`
+    -   **Location:** `docs/prd/current_prd.md`
 
 -   **The "How" (The Development Process):**
     -   **Action:** This is a **mandatory reading**. It defines our entire development lifecycle.
@@ -173,6 +179,11 @@ Notes:
 - Do not duplicate scripts under `docs/`.
 - `.all_tofa.md` is non-canonical; canonical documentation is in `docs/`.
 
+Documentation naming policy:
+- Only the repository root uses `README.md`.
+- All other readme-like documents must include a context-specific suffix in the filename.
+- The scripts docs live here in onboarding and under `docs/scripts/` content files, not `README.md`.
+
 
 ## Current Project Structure (essential paths)
 
@@ -234,6 +245,8 @@ The canonical documentation lives in `docs/`. Helper tools live in `scripts/`.
 ## Quick Reference Links
 
 - **Project Root:** `docs/pipeline/active/`
+- **PRD:** `docs/prd/current_prd.md`
+- **PRD Templates:** `docs/templates/`
 - **Rules:** `docs/rules/`
 - **Templates:** `docs/templates/`
 - **ADRs:** `docs/adr/`
