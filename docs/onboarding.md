@@ -146,6 +146,91 @@ You are now ready to begin.
 
 ---
 
+## Helper Scripts (packaged)
+
+The project ships helper tools under `scripts/`:
+
+- `scripts/docs/integrate_tofa_docs.py`
+  - Generates consolidated `.all_tofa.md` at project root for LLM context.
+  - Run: `python scripts/docs/integrate_tofa_docs.py`
+  - Sources of truth: `docs/`, `.github/instructions/`, `.taskmaster/`
+- `scripts/installers/github_local_sync_installer/install_github_uploader.sh`
+  - Installs `upload_to_github` to `/usr/local/bin`.
+  - Usage:
+    - `chmod +x scripts/installers/github_local_sync_installer/install_github_uploader.sh`
+    - `sudo scripts/installers/github_local_sync_installer/install_github_uploader.sh`
+  - Then:
+    - `upload_to_github <repo-url-without-.git> "Commit message"`
+- `scripts/installers/github_project_creator_tofa/install_github_project_creator_tofa.sh`
+  - Installs `add_project_tofa` to `/usr/local/bin`.
+  - Usage:
+    - `chmod +x scripts/installers/github_project_creator_tofa/install_github_project_creator_tofa.sh`
+    - `sudo scripts/installers/github_project_creator_tofa/install_github_project_creator_tofa.sh`
+  - Then:
+    - `add_project_tofa <template-repo> <project_name> "description"`
+
+Notes:
+- Do not duplicate scripts under `docs/`.
+- `.all_tofa.md` is non-canonical; canonical documentation is in `docs/`.
+
+
+## Current Project Structure (essential paths)
+
+The canonical documentation lives in `docs/`. Helper tools live in `scripts/`.
+
+```
+.
+├── .add_context_results
+│   └── docs_task-master
+├── .all_tofa.md
+├── .context
+│   └── docs_task-master.md
+├── .env
+├── .github
+│   └── instructions
+├── .gitignore
+├── .taskmaster
+│   ├── config.json
+│   ├── state.json
+│   └── templates
+├── .versions
+│   ├── .archive
+│   ├── my_workflow.md
+│   ├── pipeline.md
+│   ├── sitemap_stats.log
+│   ├── TOFA-WDF.md
+│   ├── v2 pipeline.md
+│   ├── v2 TOFA-WDF.md
+│   ├── v2 workflow.md
+│   ├── v3_architectural_best_practices.md
+│   ├── v3_development_pipeline.md
+│   ├── v3_pickup.md
+│   └── v3_workflow.md
+├── .vscode
+│   └── mcp.json
+├── docs
+│   ├── adr
+│   ├── external_knowledge
+│   ├── github_local_sync_installer
+│   ├── github_project_creator_tofa
+│   ├── onboarding
+│   ├── onboarding.md
+│   ├── pipeline
+│   ├── rules
+│   ├── scripts
+│   └── templates
+├── improvements.md
+├── LICENSE
+├── next.md
+├── onboarding.md
+├── README.md
+└── scripts
+    ├── docs
+    └── installers
+
+24 directories, 24 files
+```
+
 ## Quick Reference Links
 
 - **Project Root:** `docs/pipeline/active/`
@@ -153,6 +238,7 @@ You are now ready to begin.
 - **Templates:** `docs/templates/`
 - **ADRs:** `docs/adr/`
 - **Configuration:** `config/`
+- **Scripts:** `scripts/`
 
 ---
 
