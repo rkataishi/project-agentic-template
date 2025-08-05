@@ -50,12 +50,12 @@ task-master --version
 # Initialize Task Master
 task-master init -y
 
-# Ensure PRD exists (or create it using the template)
-# Save your PRD as docs/prd/current_prd.md
+# PRD templates are under docs/templates/, the working PRD required by the workflow must live under docs/prd/
+# Create the PRD folder and base file from the template (if you don't already have one)
 mkdir -p docs/prd
 cp docs/templates/template_prd.md docs/prd/current_prd.md
 
-# Parse the PRD to generate initial tasks
+# Parse the PRD (content‑rich, adapted from template) to generate initial tasks
 task-master parse-prd docs/prd/current_prd.md -o .taskmaster/tasks/tasks.json -n 8 -f
 
 # Optional: Configure AI models (guided)
@@ -94,6 +94,13 @@ Your next step is to absorb the project's context.
 -   **The "Why" (The Mission):**
     -   **Action:** Read the Product Requirements Document (PRD).
     -   **Location:** `docs/prd/current_prd.md`
+
+PRD workflow requirements:
+- PRD templates live under: [`docs/templates/`](docs/templates/)
+  - Start from: [`docs/templates/template_prd.md`](docs/templates/template_prd.md) or the example: [`docs/templates/example_prd.md`](docs/templates/example_prd.md)
+- The actual, required PRD used by the workflow must live under: `docs/prd/` as a file (recommended name: `docs/prd/current_prd.md`).
+  - The template is a prerequisite: you copy/adapt it to produce a content‑rich PRD that guides the end‑to‑end workflow.
+  - Once authored, this PRD is parsed by Task Master to generate `.taskmaster/tasks/tasks.json`, then expanded and generated into task files per our workflow.
 
 -   **The "How" (The Development Process):**
     -   **Action:** This is a **mandatory reading**. It defines our entire development lifecycle.
@@ -245,8 +252,8 @@ The canonical documentation lives in `docs/`. Helper tools live in `scripts/`.
 ## Quick Reference Links
 
 - **Project Root:** `docs/pipeline/active/`
-- **PRD:** `docs/prd/current_prd.md`
-- **PRD Templates:** `docs/templates/`
+- **PRD (required for workflow):** `docs/prd/current_prd.md`
+- **PRD Templates (prerequisite source):** `docs/templates/`
 - **Rules:** `docs/rules/`
 - **Templates:** `docs/templates/`
 - **ADRs:** `docs/adr/`
